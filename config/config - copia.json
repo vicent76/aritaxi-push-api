@@ -1,0 +1,15 @@
+{
+    "apiPort": 9902,
+    "apiHost": "localhost",
+    "ficheros": "C:\\Ariadna\\AriAgro-Api\\ficheros\\",
+    "smtpConfig": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true, 
+        "auth": {
+            "user": "info@agricolacatadau.com",
+            "pass": "Info2014"
+        }
+    },
+    "destinatario": "info@agricolacatadau.com"
+}

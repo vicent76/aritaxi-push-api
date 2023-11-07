@@ -1,0 +1,68 @@
+﻿{
+    "server": "mysql01.ariadnasw.com",
+    "port": "3306",
+    "user": "root",
+    "password": "aritel",
+    "password": "aritel",
+    "ariagro": {
+        "server": "mysql01.ariadnasw.com",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagro"
+    },
+    "usuarios": {
+        "server": "mysql01.ariadnasw.com",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "usuarios"
+    },
+    "gessocial": {
+        "server": "mysql01.ariadnasw.com",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges"
+    },
+    "tienda": {
+        "server": "mysql01.ariadnasw.com",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges3",
+        "tipo_fac_tienda": ["FAV"]
+    },
+    "telefonia": {
+        "server": "mysql01.ariadnasw.com",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges1",
+<<<<<<< HEAD
+        "tipo_fac_tienda": ["FAV"]
+    },
+    "telefonia": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges1",
+        "tipo_fac_telefonia": ["FAT"]
+    },
+    "gasolinera": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagroutil"
+    },
+	"tratamientos": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagro",
+        "tipo_fac_adv": ["FAS"]
+    }
+}

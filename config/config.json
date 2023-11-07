@@ -1,0 +1,18 @@
+{
+    "apiPort": 9902,
+    "apiHost": "localhost",
+    "ficheros": "C:\\Ariadna\\AriAGRO-API\\ficheros\\",
+    "reports_dir": "C:\\Ariadna\\AriAGRO-API\\public\\reports",
+    "clasif_dir": "C:\\Ariadna\\AriAGRO-API\\public\\ficheros\\temporales",
+    "json_dir": "C:\\Ariadna\\AriAGRO-API\\public\\json",
+    "smtpConfig": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true, 
+        "auth": {
+            "user": "info@agricolacatadau.com",
+            "pass": "Info2014"
+        }
+    },
+    "destinatario": "info@agricolacatadau.com"
+}

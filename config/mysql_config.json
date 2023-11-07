@@ -1,0 +1,59 @@
+﻿{
+    "server": "localhost",
+    "port": "3306",
+    "user": "root",
+    "password": "aritel",
+    "ariagro": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagro"
+    },
+    "usuarios": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "usuarios"
+    },
+    "tienda": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges1",
+        "tipo_fac_tienda": ["FAV","FRT","FTI"]
+    },
+    "telefonia": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariges1",
+        "tipo_fac_telefonia": ["FAT"]
+    },
+    "push": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "aripush"
+    },
+	"gasolinera": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagroutil"
+    },
+	"tratamientos": {
+        "server": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "aritel",
+        "database": "ariagro",
+        "tipo_fac_adv": ["FAP"]
+    }
+}
+

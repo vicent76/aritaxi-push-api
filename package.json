@@ -1,0 +1,39 @@
+{
+  "name": "ariagroapi",
+  "version": "0.0.1",
+  "description": "API de acceso para la aplici�n AriAgro",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "ragar_000",
+    "email": "rafa@myariadna.com"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "^1.13.3",
+    "cors": "^2.7.1",
+    "csv": "^0.4.6",
+    "dotenv": "^6.2.0",
+    "express": "^4.13.3",
+    "formidable": "^1.0.17",
+    "moment": "^2.22.2",
+    "mysql": "^2.9.0",
+    "mysql2": "^3.6.1",
+    "nodemailer": "^2.4.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "stimulsoft-reports-js": "^2017.1.10",
+    "xlsx": "^0.8.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.1.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
