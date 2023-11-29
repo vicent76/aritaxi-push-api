@@ -12,6 +12,7 @@
     "email": "rafa@myariadna.com"
   },
   "dependencies": {
+    "api": "^6.1.1",
     "async": "^1.5.0",
     "body-parser": "^1.13.3",
     "cors": "^2.7.1",
