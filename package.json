@@ -24,6 +24,7 @@
     "mysql": "^2.9.0",
     "mysql2": "^3.6.1",
     "nodemailer": "^2.4.2",
+    "onesignal-node": "^3.4.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "stimulsoft-reports-js": "^2017.1.10",
