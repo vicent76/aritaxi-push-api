@@ -110,5 +110,5 @@ app.use('/api', router);
 // START SERVER
 //==========================
 app.listen(process.env.API_PORT);
-console.log("ArutaxiApi VRS: ", pjson.version)
-console.log("AriraxiApi en puerto: ", process.env.API_PORT);
+console.log("AriTaxiApi VRS: ", pjson.version)
+console.log("AriTaxiApi en puerto: ", process.env.API_PORT);
