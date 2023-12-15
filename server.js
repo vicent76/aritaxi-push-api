@@ -7,10 +7,7 @@ var pjson = require('./package.json'); // read vrs and more information
 var cors = require('cors'); // cross origin resopurce sharing management
 
 // modulos encargados de las rutas
-var campos_router = require('./lib/campos/campos_controller');
-var anticipos_liquidaciones_router = require('./lib/anticipos-liquidaciones/anticipos_liquidaciones_controller');
 var empresas_router = require('./lib/empresas/empresas_controller');
-var campanyas_router = require('./lib/campanyas/campanyas_controller');
 var facturas_router = require('./lib/facturas/facturas_controller');
 
 // controladores para rutas de push
@@ -72,17 +69,10 @@ router.get('/', function (req, res){
     res.end(str);
 });
 
-//---------- Rutas relacionadas con los campos
-app.use('/api/campos', campos_router);
-//---------- Rutas relacionadas con los anticipos y las liquidaciones
-app.use('/api/anticipos-liquidaciones', anticipos_liquidaciones_router);
 //---------- Rutas relacionadas con empresas
 app.use('/api/empresas', empresas_router);
-//---------- Rutas relacionadas con campanyas
-app.use('/api/campanyas', campanyas_router);
 //---------- Rutas relacionadas con facturas
 app.use('/api/facturas', facturas_router);
-
 //---------- Rutas relacionadas con version
 app.use('/api/version', version_router);
 //---------- Rutas relacionadas con administradores
