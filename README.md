@@ -30,9 +30,7 @@ Se utiliza un fichero de configuración tipo .env con el siguiente significado p
 **PUBLICIDAD_TIPO_FACT**=[]
 **LIQUIDACIONES_TIPO_FACT**=[]
 
-
-
-  
+### Parámetros adicionales
 **ARIADNA_S2_URL**=Dirección en la que está escuchando el servicio S2 que se encarga de la generación de las facturas en PDF y su envío por correo  
 
 
