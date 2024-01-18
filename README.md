@@ -25,10 +25,10 @@ Se utiliza un fichero de configuración tipo .env con el siguiente significado p
 **BASE_MYSQL_DATABASE**= base de datos de destino de las consultas
 
 ### tipos de facturas que se recuperan según su tipo, se expresan como un array de objetos con valores de tipo string con los tipos deseados
-**CUOTAS_TIPO_FACT**=[]
-**VENTA_SOCIO_TIPO_FAC**=[]
-**PUBLICIDAD_TIPO_FACT**=[]
-**LIQUIDACIONES_TIPO_FACT**=[]
+**CUOTAS_TIPO_FACT**= facturas de cuotas
+**VENTA_SOCIO_TIPO_FAC**= facturas de ventas
+**PUBLICIDAD_TIPO_FACT**= facturas de publicidad
+**LIQUIDACIONES_TIPO_FACT**= facturas de liquidaciones
 
 ### Parámetros adicionales
 **ARIADNA_S2_URL**=Dirección en la que está escuchando el servicio S2 que se encarga de la generación de las facturas en PDF y su envío por correo  
