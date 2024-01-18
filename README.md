@@ -24,7 +24,8 @@ Se utiliza un fichero de configuración tipo .env con el siguiente significado p
 **BASE_MYSQL_PASSWORD**= Contraseña del usuario MYSQL   
 **BASE_MYSQL_DATABASE**= base de datos de destino de las consultas
 
-### tipos de facturas que se recuperan según su tipo, se expresan como un array de objetos con valores de tipo string con los tipos deseados
+### Tipos de facturas que se recuperan según su código, se expresan como un array de objetos 
+### con valores de tipo  string con los códigos de factura deseados
 **CUOTAS_TIPO_FACT**= facturas de cuotas
 **VENTA_SOCIO_TIPO_FAC**= facturas de ventas
 **PUBLICIDAD_TIPO_FACT**= facturas de publicidad
