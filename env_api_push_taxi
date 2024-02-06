@@ -1,0 +1,37 @@
+#configuracion general
+API_PORT=8022
+API_HOST=192.168.1.62
+
+#configuracion correo
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=465
+EMAIL_SECURE=true 
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_DESTINATARIO=vicent@myariadna.com
+
+#configuracion mysql
+
+
+BASE_MYSQL_SERVER=ariadna.mysql1.ariadnasw.com
+BASE_MYSQL_PORT=3306
+BASE_MYSQL_USER=apps
+BASE_MYSQL_PASSWORD=20Aritel12
+BASE_MYSQL_DATABASE=app-aritaxi
+
+
+
+CUOTAS_TIPO_FACT = ["FCE", "FCN", "FRC"]
+VENTA_SOCIO_TIPO_FAC = ["FAV", "FRT"]
+PUBLICIDAD_TIPO_FACT = ["FPS"]
+LIQUIDACIONES_TIPO_FACT = ["FLI", "FRL"]
+
+ARIADNA_S2_URL=http://192.168.1.62:8090
+
+
+
+
+
+
+
+
