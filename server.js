@@ -20,6 +20,7 @@ var uploader_router = require('./lib/uploader/uploader_controller');
 var recursos_router = require('./lib/recursos/recursos_controller');
 var enlaces_router = require('./lib/enlaces/enlaces_controller');
 var s2_router = require('./lib/s2/s2_controller');
+var estadisticas_router = require('./lib/estadisticas/estadisticas_controller');
 // express
 var app = express();
 
@@ -92,6 +93,9 @@ app.use('/api/enlaces', enlaces_router);
 
 //---------- Rutas relacionadas con solicitud de documentos
 app.use('/api/s2', s2_router);
+
+//---------- Rutas relacionadas con estadisticas
+app.use('/api/estadisticas', estadisticas_router);
 
 
 // Registrar rutas base
