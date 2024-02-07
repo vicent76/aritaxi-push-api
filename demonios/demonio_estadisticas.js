@@ -1,5 +1,7 @@
 const dotenv = require('dotenv')
 const moment = require('moment')
+const mysql = require('mysql2/promise')
+const connector = require('../lib/comun/conector_mysql')
 const estadisticasAlfa = require('../lib/estadisticas/estadisticas_alfa')
 dotenv.config()
 
@@ -18,6 +20,8 @@ const demonioEstadisticas = {
                 let fechas = await estadisticasAlfa.fechasMesActual()
                 let desdeFecha = moment(fechas.primer_dia).format('YYYY-MM-DD')
                 let hastaFecha = moment(fechas.ultimo_dia).format('YYYY-MM-DD')
+                let ano = fechas.ano_actual
+                let mes = fechas.mes_actual
                 let pagina = 1
                 console.log(`Procesando desde ${desdeFecha} hasta ${hastaFecha}`)
                 // Hacemos la primera llamada y asi obtenemos los primeros datos 
@@ -36,6 +40,7 @@ const demonioEstadisticas = {
                     registros = datos.data
                     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
                 }
+                await demonioEstadisticas.grabarResultados(resultados, ano, mes)
                 console.log('Demonio estadisticas end')
                 estaTrabajando = false
             } catch (error) {
@@ -61,6 +66,41 @@ const demonioEstadisticas = {
                     totalImporte: importe
                 })
             }
+        }
+    },
+    grabarResultados: async(resultados, ano, mes) => {
+        console.log(`Grabando resultados año:${ano} mes:${mes}`)
+        let conn = undefined
+        try {
+            // Creamos una conexión general
+            let cfg = await connector.base()
+            conn = await mysql.createConnection(cfg)
+            await conn.query('START TRANSACTION')
+            // Primero eliminamos los registros para ese año y mes
+            let sql = `delete from app_estadisticas where ano = ${ano} and mes = ${mes}`
+            await conn.query(sql)
+            // Recorremos los resultados para darlos de alta
+            for (let index = 0; index < resultados.length; index++) {
+                const resultado = resultados[index];
+                const reg = {
+                    ano: ano,
+                    mes: mes,
+                    licencia: resultado.licencia,
+                    viajes: resultado.totalViajes,
+                    importe: resultado.totalImporte
+                }
+                await conn.query('INSERT INTO app_estadisticas SET ?', reg)
+            }
+            // Si todo ha ido bien grabamos y cerramos
+            await conn.query('COMMIT')
+            await conn.end()
+            return 
+        } catch (error) {
+            if (conn) {
+                await conn.query('ROLLBACK')
+                await conn.end()
+            }
+            throw (error)
         }
     }
 }
