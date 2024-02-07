@@ -32,10 +32,10 @@ const demonioEstadisticas = {
                 let registros = datos.data
                 await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
                 let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
-                // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
                 for (let index = 2; index <= numPaginas; index++) {
                     let pagina = index
-                    // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                    console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
                     datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
                     registros = datos.data
                     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
@@ -54,18 +54,29 @@ const demonioEstadisticas = {
             const registro = registros[index];
             let licencia = registro.TAXI_LICENSE
             let importe = registro.TRIP_AMOUNT
+            let liquidable = false
+            if (registro.SUBSCR_CUSTOMER_ID) liquidable = true
             // Buscamos si en los resultados ya existe este objeto
+            let nuevo = false
             let taxista = resultados.find(r => r.licencia === licencia)
             if (taxista) {
                 taxista.totalViajes += 1
                 taxista.totalImporte += importe
             } else {
-                resultados.push({
+                taxista = {
                     licencia: licencia,
                     totalViajes: 1,
-                    totalImporte: importe
-                })
+                    totalImporte: importe,
+                    totalViajesLiq: 0,
+                    totalImporteLiq: 0
+                }
+                nuevo = true
             }
+            if (liquidable) {
+                taxista.totalViajesLiq += 1
+                taxista.totalImporteLiq += importe
+            }
+            if (nuevo) resultados.push(taxista)
         }
     },
     grabarResultados: async(resultados, ano, mes) => {
@@ -87,7 +98,9 @@ const demonioEstadisticas = {
                     mes: mes,
                     licencia: resultado.licencia,
                     viajes: resultado.totalViajes,
-                    importe: resultado.totalImporte
+                    importe: resultado.totalImporte,
+                    viajesLiquidable: resultado.totalViajesLiq,
+                    importeLiquidable: resultado.totalImporteLiq
                 }
                 await conn.query('INSERT INTO app_estadisticas SET ?', reg)
             }
