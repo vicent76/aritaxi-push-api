@@ -11,3 +11,4 @@ CREATE TABLE `app_estadisticas` (
   `viajesLiquidable` int(11) DEFAULT NULL COMMENT 'Acumulado de viajes candidatos a liquidar para ese registro',
   PRIMARY KEY (`estadisticaId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5955 DEFAULT CHARSET=latin1 COMMENT='LLeva las estadisticas del número de viajes y acumulado de importes por licencia, año y mes';
+
