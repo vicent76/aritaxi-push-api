@@ -1,2 +1,0 @@
-ALTER TABLE `aripush`.`usuariospush`   
-  ADD COLUMN `esTrabajador` TINYINT(1) DEFAULT 0  NULL AFTER `soloMensajes`;
