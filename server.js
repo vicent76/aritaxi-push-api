@@ -20,6 +20,7 @@ var uploader_router = require('./lib/uploader/uploader_controller');
 var recursos_router = require('./lib/recursos/recursos_controller');
 var enlaces_router = require('./lib/enlaces/enlaces_controller');
 var s2_router = require('./lib/s2/s2_controller');
+var estadisticas_router = require('./lib/estadisticas/estadisticas_controller');
 // express
 var app = express();
 
