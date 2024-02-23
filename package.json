@@ -1,5 +1,5 @@
 {
-  "name": "ariagroapi",
+  "name": "aritaxiapi",
   "version": "0.0.3",
   "description": "API de acceso para la aplici�n Aritaxi-notificaciones",
   "main": "server.js",
