@@ -20,6 +20,8 @@ var uploader_router = require('./lib/uploader/uploader_controller');
 var recursos_router = require('./lib/recursos/recursos_controller');
 var enlaces_router = require('./lib/enlaces/enlaces_controller');
 var s2_router = require('./lib/s2/s2_controller');
+var estadisticas_router = require('./lib/estadisticas/estadisticas_controller');
+var demonioEstadisticas = require('./demonios/demonio_estadisticas')
 // express
 var app = express();
 
@@ -93,6 +95,9 @@ app.use('/api/enlaces', enlaces_router);
 //---------- Rutas relacionadas con solicitud de documentos
 app.use('/api/s2', s2_router);
 
+//---------- Rutas relacionadas con estadisticas
+app.use('/api/estadisticas', estadisticas_router);
+
 
 // Registrar rutas base
 app.use('/api', router);
@@ -102,3 +107,10 @@ app.use('/api', router);
 app.listen(process.env.API_PORT);
 console.log("AriTaxiApi VRS: ", pjson.version)
 console.log("AriTaxiApi en puerto: ", process.env.API_PORT);
+
+// START DEMONIO
+if (process.env.ESTADISTICAS_DELAY == 0) {
+	console.log('No arranca demonio DELAY=0')
+} else {
+	setInterval(demonioEstadisticas.run, process.env.ESTADISTICAS_DELAY)
+}
