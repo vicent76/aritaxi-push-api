@@ -1,1 +1,0 @@
-SELECT u.usuarioPushId, u.playerId FROM usuariospush AS u WHERE u.comunId IN ('11,113,114')

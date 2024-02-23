@@ -1,7 +1,7 @@
 {
   "name": "ariagroapi",
   "version": "0.0.3",
-  "description": "API de acceso para la aplici�n AriAgro",
+  "description": "API de acceso para la aplici�n Aritaxi-notificaciones",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
