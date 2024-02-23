@@ -95,9 +95,6 @@ app.use('/api/enlaces', enlaces_router);
 //---------- Rutas relacionadas con solicitud de documentos
 app.use('/api/s2', s2_router);
 
-//---------- Rutas relacionadas con estadisticas
-app.use('/api/estadisticas', estadisticas_router);
-
 
 // Registrar rutas base
 app.use('/api', router);
