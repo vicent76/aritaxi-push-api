@@ -106,8 +106,8 @@ console.log("AriTaxiApi VRS: ", pjson.version)
 console.log("AriTaxiApi en puerto: ", process.env.API_PORT);
 
 // START DEMONIO
-if (process.env.ESTADISTICAS_DELAY == 0) {
+/* if (process.env.ESTADISTICAS_DELAY == 0) {
 	console.log('No arranca demonio DELAY=0')
 } else {
 	setInterval(demonioEstadisticas.run, process.env.ESTADISTICAS_DELAY)
-}
+} */
