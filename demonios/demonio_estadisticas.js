@@ -32,10 +32,10 @@ const demonioEstadisticas = {
                 let registros = datos.data
                 await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
                 let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
-                console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
                 for (let index = 2; index <= numPaginas; index++) {
                     let pagina = index
-                    console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                    // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
                     datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
                     registros = datos.data
                     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)

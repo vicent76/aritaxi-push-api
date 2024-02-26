@@ -13,10 +13,10 @@ docker run -d --name aritaxi-push -p8022:8022 \
 -e BASE_MYSQL_PASSWORD=aritel \
 -e BASE_MYSQL_DATABASE=aritaxi1 \
 -e BASE_MYSQL_USUARIOS=usuarios \
--e CUOTAS_TIPO_FACT = ["FCE", "FCN", "FRC"] \
--e VENTA_SOCIO_TIPO_FAC = ["FAV", "FRT"] \
--e PUBLICIDAD_TIPO_FACT = ["FPS"] \
--e LIQUIDACIONES_TIPO_FACT = ["FLI", "FRL"]\
+-e CUOTAS_TIPO_FACT = FCE,FCN,FRC \
+-e VENTA_SOCIO_TIPO_FAC = FAV,FRT] \
+-e PUBLICIDAD_TIPO_FACT = FPS \
+-e LIQUIDACIONES_TIPO_FACT = FLI,FRL\
 -e ARIADNA_S2_URL=http://192.168.1.62:8090 \
 -e ESTADISTICAS_LOCAL=Europe/Madrid \
 -e ALFA_URL=https://alfa.a-rte.es:9292/ServiceAlfa.svc/rest/ \
