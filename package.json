@@ -2,7 +2,7 @@
   "name": "aritaxiapi",
   "version": "0.0.4",
   "description": "API de acceso para la aplici�n Aritaxi-notificaciones",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
