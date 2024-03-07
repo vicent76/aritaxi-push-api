@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.55cc8bd3.css",
-    "main.js": "/static/js/main.9c1fa2ad.js",
+    "main.js": "/static/js/main.6b03dd2d.js",
     "static/js/787.6b16a372.chunk.js": "/static/js/787.6b16a372.chunk.js",
     "static/media/AriTaxiPush.jpg": "/static/media/AriTaxiPush.c4024dce17cebd2c6237.jpg",
     "index.html": "/index.html",
     "main.55cc8bd3.css.map": "/static/css/main.55cc8bd3.css.map",
-    "main.9c1fa2ad.js.map": "/static/js/main.9c1fa2ad.js.map",
+    "main.6b03dd2d.js.map": "/static/js/main.6b03dd2d.js.map",
     "787.6b16a372.chunk.js.map": "/static/js/787.6b16a372.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.55cc8bd3.css",
-    "static/js/main.9c1fa2ad.js"
+    "static/js/main.6b03dd2d.js"
   ]
 }
