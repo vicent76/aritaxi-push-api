@@ -1,6 +1,6 @@
 {
   "name": "aritaxiapi",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "API de acceso para la aplici�n Aritaxi-notificaciones",
   "main": "app.js",
   "scripts": {
