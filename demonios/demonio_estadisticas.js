@@ -68,7 +68,7 @@ const demonioEstadisticas = {
             console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
             datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
             registros = datos.data
-            await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
+            await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
         }
     },
     procesarGrupoRegistros: async(registros, resultados, empresa) => {
@@ -80,7 +80,7 @@ const demonioEstadisticas = {
             if (registro.SUBSCR_CUSTOMER_ID) liquidable = true
             // Buscamos si en los resultados ya existe este objeto
             let nuevo = false
-            let taxista = resultados.find(r => r.licencia === licencia)
+            let taxista = resultados.find(r => (r.licencia === licencia) && (r.empresa === empresa))
             if (taxista) {
                 taxista.totalViajes += 1
                 taxista.totalImporte += importe
