@@ -27,19 +27,25 @@ const demonioEstadisticas = {
                 // Hacemos la primera llamada y asi obtenemos los primeros datos 
                 // y conocemos el número total de registros.
                 let resultados = []
-                let datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
-                let totalRegistros = datos.totalCount
-                let registros = datos.data
-                await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
-                let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
-                // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
-                for (let index = 2; index <= numPaginas; index++) {
-                    let pagina = index
-                    // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
-                    datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
-                    registros = datos.data
-                    await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
+                // Leemos las diferentes empresas en un vector
+                let empresas = process.env.ALFA_COMPANIES.split(',')
+                for (let index = 0; index < empresas.length; index++) {
+                    const empresa = empresas[index];
+                    await demonioEstadisticas.procesarUnaEmpresa(desdeFecha, hastaFecha, empresa, resultados)
                 }
+                // let datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
+                // let totalRegistros = datos.totalCount
+                // let registros = datos.data
+                // await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
+                // let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
+                // // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                // for (let index = 2; index <= numPaginas; index++) {
+                //     let pagina = index
+                //     // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+                //     datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
+                //     registros = datos.data
+                //     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
+                // }
                 await demonioEstadisticas.grabarResultados(resultados, ano, mes)
                 console.log('Demonio estadisticas end')
                 estaTrabajando = false
@@ -49,7 +55,23 @@ const demonioEstadisticas = {
             }
         })()
     },
-    procesarGrupoRegistros: async(registros, resultados) => {
+    procesarUnaEmpresa: async(desdeFecha, hastaFecha, empresa, resultados) => {
+        let pagina = 1
+        let datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa)
+        let totalRegistros = datos.totalCount
+        let registros = datos.data
+        await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
+        let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
+        // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+        for (let index = 2; index <= numPaginas; index++) {
+            let pagina = index
+            console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
+            datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
+            registros = datos.data
+            await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
+        }
+    },
+    procesarGrupoRegistros: async(registros, resultados, empresa) => {
         for (let index = 0; index < registros.length; index++) {
             const registro = registros[index];
             let licencia = registro.TAXI_LICENSE
@@ -68,7 +90,8 @@ const demonioEstadisticas = {
                     totalViajes: 1,
                     totalImporte: importe,
                     totalViajesLiq: 0,
-                    totalImporteLiq: 0
+                    totalImporteLiq: 0,
+                    empresa: empresa
                 }
                 nuevo = true
             }
