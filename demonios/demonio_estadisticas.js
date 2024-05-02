@@ -74,6 +74,7 @@ const demonioEstadisticas = {
     procesarGrupoRegistros: async(registros, resultados, empresa) => {
         for (let index = 0; index < registros.length; index++) {
             const registro = registros[index];
+            if (registro.STATUS === 956) continue // No procesamos los anulados.
             let licencia = registro.TAXI_LICENSE
             let importe = registro.TRIP_AMOUNT
             let liquidable = false
@@ -123,7 +124,8 @@ const demonioEstadisticas = {
                     viajes: resultado.totalViajes,
                     importe: resultado.totalImporte,
                     viajesLiquidable: resultado.totalViajesLiq,
-                    importeLiquidable: resultado.totalImporteLiq
+                    importeLiquidable: resultado.totalImporteLiq,
+                    empresa: resultado.empresa
                 }
                 await conn.query('INSERT INTO app_estadisticas SET ?', reg)
             }
