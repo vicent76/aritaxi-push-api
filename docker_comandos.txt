@@ -1,3 +1,3 @@
-docker buildx build -t ariadnasw/aritaxi-push:latest -t ariadnasw/aritaxi-push:0.0.8 --platform linux/amd64 -f Dockerfile . 
+docker buildx build -t ariadnasw/aritaxi-push:latest -t ariadnasw/aritaxi-push:0.1.2 --platform linux/amd64 -f Dockerfile . 
 docker push ariadnasw/aritaxi-push:latest
-docker push ariadnasw/aritaxi-push:0.0.8
+docker push ariadnasw/aritaxi-push:0.1.2
