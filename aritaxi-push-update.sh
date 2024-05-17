@@ -25,5 +25,6 @@ docker run -d --name aritaxi-push -p8022:8022 \
 -e ALFA_COMPANYID=43 \
 -e ALFA_CONFIGURATIONID=103 \
 -e ESTADISTICAS_DELAY=5000 \
+-e ALFA_COMPANIES=43,149,197
 --restart unless-stopped ariadnasw/aritaxi-push
 
