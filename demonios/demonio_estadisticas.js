@@ -3,9 +3,11 @@ const moment = require('moment')
 const mysql = require('mysql2/promise')
 const connector = require('../lib/comun/conector_mysql')
 const estadisticasAlfa = require('../lib/estadisticas/estadisticas_alfa')
+const fs = require('fs')
 dotenv.config()
 
 let estaTrabajando = false
+let regLic = []
 
 const demonioEstadisticas = {
     run: async () => {
@@ -47,6 +49,7 @@ const demonioEstadisticas = {
                 //     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
                 // }
                 await demonioEstadisticas.grabarResultados(resultados, ano, mes)
+                fs.writeFileSync('2122.json',regLic)
                 console.log('Demonio estadisticas end')
                 estaTrabajando = false
             } catch (error) {
@@ -76,6 +79,9 @@ const demonioEstadisticas = {
             const registro = registros[index];
             if (registro.STATUS === 956) continue // No procesamos los anulados.
             let licencia = registro.TAXI_LICENSE
+            if (licencia === '2122') {
+                regLic.push(registro)
+            }
             let importe = registro.TRIP_AMOUNT
             let liquidable = false
             if (registro.SUBSCR_CUSTOMER_ID) liquidable = true
