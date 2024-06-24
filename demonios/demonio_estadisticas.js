@@ -35,21 +35,8 @@ const demonioEstadisticas = {
                     const empresa = empresas[index];
                     await demonioEstadisticas.procesarUnaEmpresa(desdeFecha, hastaFecha, empresa, resultados)
                 }
-                // let datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
-                // let totalRegistros = datos.totalCount
-                // let registros = datos.data
-                // await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
-                // let numPaginas = Math.ceil(totalRegistros / 100) // Cada página 100 registros
-                // // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
-                // for (let index = 2; index <= numPaginas; index++) {
-                //     let pagina = index
-                //     // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
-                //     datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
-                //     registros = datos.data
-                //     await demonioEstadisticas.procesarGrupoRegistros(registros, resultados)
-                // }
                 await demonioEstadisticas.grabarResultados(resultados, ano, mes)
-                fs.writeFileSync('2122.json',regLic)
+                // fs.writeFileSync('2122.json', JSON.stringify(regLic, null))
                 console.log('Demonio estadisticas end')
                 estaTrabajando = false
             } catch (error) {
@@ -58,7 +45,7 @@ const demonioEstadisticas = {
             }
         })()
     },
-    procesarUnaEmpresa: async(desdeFecha, hastaFecha, empresa, resultados) => {
+    procesarUnaEmpresa: async (desdeFecha, hastaFecha, empresa, resultados) => {
         let pagina = 1
         let datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa)
         let totalRegistros = datos.totalCount
@@ -74,7 +61,7 @@ const demonioEstadisticas = {
             await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
         }
     },
-    procesarGrupoRegistros: async(registros, resultados, empresa) => {
+    procesarGrupoRegistros: async (registros, resultados, empresa) => {
         for (let index = 0; index < registros.length; index++) {
             const registro = registros[index];
             if (registro.STATUS === 956) continue // No procesamos los anulados.
@@ -109,7 +96,7 @@ const demonioEstadisticas = {
             if (nuevo) resultados.push(taxista)
         }
     },
-    grabarResultados: async(resultados, ano, mes) => {
+    grabarResultados: async (resultados, ano, mes) => {
         console.log(`Grabando resultados año:${ano} mes:${mes}`)
         let conn = undefined
         try {
@@ -138,7 +125,7 @@ const demonioEstadisticas = {
             // Si todo ha ido bien grabamos y cerramos
             await conn.query('COMMIT')
             await conn.end()
-            return 
+            return
         } catch (error) {
             if (conn) {
                 await conn.query('ROLLBACK')
