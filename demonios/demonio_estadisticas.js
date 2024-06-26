@@ -67,9 +67,6 @@ const demonioEstadisticas = {
             const registro = registros[index];
             if (registro.STATUS === 956) continue // No procesamos los anulados.
             let licencia = registro.TAXI_LICENSE
-            if (licencia === '2122') {
-                regLic.push(registro)
-            }
             let importe = registro.TRIP_AMOUNT
             let liquidable = false
             if (registro.SUBSCR_CUSTOMER_ID) liquidable = true
