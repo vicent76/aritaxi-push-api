@@ -25,6 +25,7 @@ const demonioEstadisticas = {
                 let ano = fechas.ano_actual
                 let mes = fechas.mes_actual
                 let pagina = 1
+                let pageSize = 5000
                 console.log(`Procesando desde ${desdeFecha} hasta ${hastaFecha}`)
                 // Hacemos la primera llamada y asi obtenemos los primeros datos 
                 // y conocemos el número total de registros.
@@ -33,7 +34,7 @@ const demonioEstadisticas = {
                 let empresas = process.env.ALFA_COMPANIES.split(',')
                 for (let index = 0; index < empresas.length; index++) {
                     const empresa = empresas[index];
-                    await demonioEstadisticas.procesarUnaEmpresa(desdeFecha, hastaFecha, empresa, resultados)
+                    await demonioEstadisticas.procesarUnaEmpresa(desdeFecha, hastaFecha, empresa, resultados, pageSize)
                 }
                 await demonioEstadisticas.grabarResultados(resultados, ano, mes)
                 // fs.writeFileSync('2122.json', JSON.stringify(regLic, null))
@@ -45,9 +46,9 @@ const demonioEstadisticas = {
             }
         })()
     },
-    procesarUnaEmpresa: async (desdeFecha, hastaFecha, empresa, resultados) => {
+    procesarUnaEmpresa: async (desdeFecha, hastaFecha, empresa, resultados, pageSize) => {
         let pagina = 1
-        let datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa)
+        let datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa, pageSize)
         let totalRegistros = datos.totalCount
         let registros = datos.data
         await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
@@ -56,7 +57,7 @@ const demonioEstadisticas = {
         for (let index = 2; index <= numPaginas; index++) {
             let pagina = index
             console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
-            datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa)
+            datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa, pageSize)
             registros = datos.data
             await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
         }
