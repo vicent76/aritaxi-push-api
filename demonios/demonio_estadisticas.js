@@ -53,7 +53,7 @@ const demonioEstadisticas = {
         let registros = datos.data
         await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
         let numPaginas = Math.ceil(totalRegistros / pageSize) // Ahora parametrizado tamaño de página
-        // console.log(`Procesando páginas: ${pagina} de ${numPaginas}`)
+        console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
         for (let index = 2; index <= numPaginas; index++) {
             let pagina = index
             console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
