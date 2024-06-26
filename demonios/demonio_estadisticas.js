@@ -56,7 +56,7 @@ const demonioEstadisticas = {
         for (let index = 2; index <= numPaginas; index++) {
             let pagina = index
             console.log(`Procesando páginas: ${pagina} de ${numPaginas} empresa ${empresa}`)
-            datos = await estadisticasAlfa.historicoServicios(desdeFecha, hastaFecha, pagina)
+            datos = await estadisticasAlfa.historicoServiciosPorEmpresa(desdeFecha, hastaFecha, pagina, empresa)
             registros = datos.data
             await demonioEstadisticas.procesarGrupoRegistros(registros, resultados, empresa)
         }
