@@ -81,3 +81,27 @@ INSERT INTO aritaxi1.app_parametros (parametroId,tituloPush,appId,restApi,gcm,bu
 -- password
 -- playerid
 -- solomensajes (tinyint)
+
+-- en usuarios
+-- herbelca_usuarios.info_intercambio definition
+
+CREATE TABLE `info_intercambio` (
+  `infoIntercambioId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifica únivocamente un registro de intercambio',
+  `sistema` varchar(255) DEFAULT NULL COMMENT 'Identifica el sistema al que se le solicita el informe',
+  `tipo` varchar(255) DEFAULT NULL COMMENT 'Identifica el tipo de pertición que se desea hacer',
+  `clave` varchar(255) DEFAULT NULL COMMENT 'Clave que identifica al registro dentro del tipo',
+  `email` varchar(255) DEFAULT NULL COMMENT 'Dirección de correo electrónico a la que hay que enviar el informe-',
+  `fichero` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL COMMENT 'Estado de la petición 0=Creada, 1=Procesada, 2=Enviada, 3=Error',
+  `obs` text COMMENT 'Campo de observaciones para cuando el estado es error indicar la causa.',
+  PRIMARY KEY (`infoIntercambioId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
+
+-- herbelca_usuarios.info_parametros definition
+
+CREATE TABLE `info_parametros` (
+  `infoparametrosId` tinyint(4) NOT NULL DEFAULT '1' COMMENT 'KEY',
+  `pathdestino` varchar(255) DEFAULT NULL COMMENT 'Path donde se guardaran los archivos solictados',
+  `ExportacionFinalizada` tinyint(4) DEFAULT '0',
+  `quearigescambiaODBC` varchar(30) DEFAULT NULL COMMENT 'Bolbaite. Si el ODBC tiene que apuntar a otra maquina MYSQL'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
