@@ -10,7 +10,7 @@ docker run -d --name aritaxi-push -p8022:8022 \
 -e BASE_MYSQL_SERVER=mysql01.ariadnasw.com \
 -e BASE_MYSQL_PORT=3306 \
 -e BASE_MYSQL_USER=root \
--e BASE_MYSQL_PASSWORD=aritel \
+-e BASE_MYSQL_PASSWORD=****** \
 -e BASE_MYSQL_DATABASE=aritaxi1 \
 -e BASE_MYSQL_USUARIOS=usuarios \
 -e CUOTAS_TIPO_FACT = FCE,FCN,FRC \
