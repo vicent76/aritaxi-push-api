@@ -11,7 +11,7 @@
         "secure": true, 
         "auth": {
             "user": "info@agricolacatadau.com",
-            "pass": "Info2014"
+            "pass": "******"
         }
     },
     "destinatario": "info@agricolacatadau.com"
