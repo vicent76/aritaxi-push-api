@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.99982c1c.css",
-    "main.js": "/static/js/main.c0c89d53.js",
+    "main.js": "/static/js/main.8220488a.js",
     "static/js/787.6b16a372.chunk.js": "/static/js/787.6b16a372.chunk.js",
     "static/media/correos.jpg": "/static/media/correos.653887a5f08c32a20f0d.jpg",
     "static/media/AriTaxiPush.jpg": "/static/media/AriTaxiPush.c4024dce17cebd2c6237.jpg",
     "index.html": "/index.html",
     "main.99982c1c.css.map": "/static/css/main.99982c1c.css.map",
-    "main.c0c89d53.js.map": "/static/js/main.c0c89d53.js.map",
+    "main.8220488a.js.map": "/static/js/main.8220488a.js.map",
     "787.6b16a372.chunk.js.map": "/static/js/787.6b16a372.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99982c1c.css",
-    "static/js/main.c0c89d53.js"
+    "static/js/main.8220488a.js"
   ]
 }
